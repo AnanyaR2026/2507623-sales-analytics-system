@@ -64,3 +64,42 @@ def find_peak_sales_day(transactions):
 
     return (peak_date, round(max_revenue, 2), peak_txn_count)
 
+
+
+def low_performing_products(transactions, threshold=10):
+    """
+    Identifies products with low sales
+
+    Returns: list of tuples
+    (ProductName, TotalQuantity, TotalRevenue)
+    """
+
+    product_stats = defaultdict(lambda: {
+        'quantity': 0,
+        'revenue': 0.0
+    })
+
+    for txn in transactions:
+        product = txn['ProductName']
+        quantity = txn['Quantity']
+        revenue = quantity * txn['UnitPrice']
+
+        product_stats[product]['quantity'] += quantity
+        product_stats[product]['revenue'] += revenue
+
+    low_performers = []
+
+    for product, stats in product_stats.items():
+        if stats['quantity'] < threshold:
+            low_performers.append(
+                (
+                    product,
+                    stats['quantity'],
+                    round(stats['revenue'], 2)
+                )
+            )
+
+
+    low_performers.sort(key=lambda x: x[1])
+
+    return low_performers
