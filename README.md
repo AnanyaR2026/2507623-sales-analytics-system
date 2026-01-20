@@ -95,5 +95,36 @@ The project is designed to reflect **real-world analytics workflows** while adhe
 https://dummyjson.com/products
 
 
+**Purpose:**  
+Enhance internal sales data with external product attributes such as category, brand, and rating.
+
+**Modules:**
+- `api_client.py` – Fetches product data from the API
+- `api_handler.py` – Maps and enriches transactions with API data
+
+**Features:**
+- Error-tolerant API calls
+- Safe fallback for unmatched products
+- Enrichment success tracking
+
+---
+
+## 📄 Report Generation
+
+**File:** `report_generator.py`
+
+Generates a structured text report containing:
+
+- Overall sales summary
+- Region-wise performance metrics
+- Top products and customers
+- Daily sales trends
+- Product performance insights
+- API enrichment statistics
+
+
+
+
+
 
 
